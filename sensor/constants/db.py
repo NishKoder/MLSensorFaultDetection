@@ -1,0 +1,1 @@
+MONGO_DATABASE_NAME: str = "database"
