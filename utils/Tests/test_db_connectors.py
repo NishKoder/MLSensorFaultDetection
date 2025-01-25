@@ -10,7 +10,6 @@ from utils.db_connectors import (
     MongoDBOperationError,
 )
 
-# Mocking external dependencies
 ca = certifi.where()
 
 class TestMongoDBClient(unittest.TestCase):
