@@ -10,5 +10,5 @@ dependencies = []
 dev = [] 
 
 [tool.setuptools.packages.find]
-include = ["sensor*", "MLSharedUtils*"]
+include = ["sensor*", "utils*"]
 exclude = ["Tests*"]
