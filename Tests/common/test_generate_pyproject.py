@@ -1,10 +1,8 @@
-from typing import List, NoReturn, Dict, Any
 import toml
-import pytest
 from unittest.mock import mock_open, patch
 
+from utils.parse import parse_requirements
 from generate_pyproject import (
-    parse_requirements,
     update_dependencies,
     update_optional_dependencies,
     write_toml_file,
@@ -47,7 +45,10 @@ def test_parse_requirements_empty_file() -> None:
 def test_parse_requirements_with_comments() -> None:
     """Test parsing a requirements file with comments and blank lines."""
     requirements_content = "# Comment\n\nrequests==2.28.0\n"
-    with patch("builtins.open", mock_open(read_data=requirements_content)) as mock_file:
+    with patch(
+        "builtins.open",
+        mock_open(read_data=requirements_content)
+    ) as mock_file:
         dependencies = parse_requirements("requirements.txt")
         mock_file.assert_called_once_with(
             "requirements.txt", 'r', encoding="utf-8"

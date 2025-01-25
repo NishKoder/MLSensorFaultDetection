@@ -5,7 +5,7 @@ import logging
 import logging.handlers
 from typing import Optional
 
-from constants import (
+from utils.constants import (
     MAX_LOG_FILE_SIZE,
     BACKUP_LOG_COUNT,
     DEFAULT_LOG_FORMAT,

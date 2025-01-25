@@ -1,8 +1,13 @@
 from typing import NoReturn
 import toml
 
+<<<<<<< HEAD
 from MLSharedUtils.types import SimpleJson
 from MLSharedUtils.parse import parse_requirements
+=======
+from utils.types import SimpleJson
+from utils.parse import parse_requirements
+>>>>>>> 9bc73b0 (Initial Setup)
 
 
 def update_dependencies(
