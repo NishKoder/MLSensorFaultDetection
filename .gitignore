@@ -10,7 +10,10 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+logs/
 develop-eggs/
+hello.py
+.vscode/
 dist/
 downloads/
 eggs/

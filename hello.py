@@ -1,5 +1,8 @@
+from sensor.pipeline.training import TrainingPipeline
+
 def main():
-    print("Hello from capstoneproject-1!")
+    training_pipeline = TrainingPipeline()
+    training_pipeline.run_pipeline()
 
 
 if __name__ == "__main__":

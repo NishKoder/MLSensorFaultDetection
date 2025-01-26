@@ -7,6 +7,7 @@ import pymongo.collection
 import pymongo.cursor
 import pymongo.database
 import pymongo.results
+from pymongo.errors import CollectionInvalid
 
 from utils.exceptions import AdvancedExceptionHandler
 from utils.types import SimpleJson
@@ -14,6 +15,7 @@ from utils.types import SimpleJson
 
 MONGODB_URI = "your_mongodb_uri"
 DATABASE_NAME = "your_database_name"
+COLLECTION_NAME = "your_collection_name"
 
 ca = certifi.where()
 
@@ -88,7 +90,7 @@ class MongoDBClient:
             )
             raise MongoDBConnectionError(str(e))
 
-    def get_collection(self, collection_name: str) -> pymongo.collection.Collection:
+    def get_collection(self, collection_name: str = COLLECTION_NAME) -> pymongo.collection.Collection:
         """
         Gets a specified collection from the database.
 
