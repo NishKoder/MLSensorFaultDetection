@@ -9,3 +9,8 @@ DEFAULT_DATE_FORMAT: str = "%Y-%m-%d %H:%M:%S"
 DEFAULT_LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 TRAIN_TEST_SPLIT_RATIO: float = 0.2
+
+
+MONGODB_URI = "your_mongodb_uri"
+DATABASE_NAME = "database"
+COLLECTION_NAME = "collection_name"

@@ -83,7 +83,9 @@ class TrainingPipeline:
         try:
             self.logger.info("Running the training pipeline.")
 
-            data_ingestion_artifact: DataIngestionArtifactEntity  = self.start_data_ingestion()
+            data_ingestion_artifact: DataIngestionArtifactEntity  = (
+                self.start_data_ingestion()
+            )
 
             self.logger.info("Training pipeline completed successfully.")
         except Exception as exc:

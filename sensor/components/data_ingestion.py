@@ -11,17 +11,39 @@ from utils.logger import AdvancedMLLogger
 from utils.scikit_learn import perform_train_test_split
 
 class DataIngestion:
+    """
+    DataIngestion class to handle the data ingestion process.
 
+    Attributes:
+        data_ingestion_config (DataIngestionConfigEntity): Configuration for
+            data ingestion.
+        logger (AdvancedMLLogger): Logger for logging information and errors.
+        _exception_handler (AdvancedExceptionHandler): Exception handler
+            for managing exceptions.
+    """
     def __init__(
         self,
         data_ingestion_config: DataIngestionConfigEntity
     ) -> None:
+        """
+        Initialize the DataIngestion class.
+
+        Args:
+            data_ingestion_config (DataIngestionConfigEntity): Configuration for
+                data ingestion.
+        """
         self._exception_handler = AdvancedExceptionHandler()
         self.logger = AdvancedMLLogger(name=DataIngestion.__name__)
         self.data_ingestion_config = data_ingestion_config
     
     def initiate_data_ingestion(self) -> DataIngestionArtifactEntity:
-        """Main entry point for data ingestion pipeline"""
+        """
+        Main entry point for data ingestion pipeline.
+
+        Returns:
+            DataIngestionArtifactEntity: Artifact containing paths to the train
+                and test datasets.
+        """
         try:
             self.logger.info("Starting data ingestion process.")
 
@@ -43,19 +65,25 @@ class DataIngestion:
             self._exception_handler.handle_exception(exc)
 
     def export_data_to_feature_store(self) -> pd.DataFrame:
-        """Public method to export data from source to feature store"""
+        """
+        Public method to export data from source to feature store.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the exported data.
+        """
         try:
             self.logger.info("Exporting data to feature store.")
             return self._export_collection_to_dataframe()
-        except Exception as exc:
-            self.logger.error(
-                "Error exporting data to feature store, reading fallback CSV.",
-                exc
-            )
+        except Exception:
             return self._read_fallback_csv()
 
     def split_data_into_train_test(self, dataframe: pd.DataFrame) -> None:
-        """Split data into train and test sets"""
+        """
+        Split data into train and test sets.
+
+        Args:
+            dataframe (pd.DataFrame): DataFrame containing the data to be split.
+        """
         try:
             self.logger.info("Splitting data into train and test sets.")
             train_set, test_set = perform_train_test_split(
@@ -87,17 +115,27 @@ class DataIngestion:
             self._exception_handler.handle_exception(exc)
 
     def _export_collection_to_dataframe(self) -> pd.DataFrame:
-        """Get data from MongoDB collection and convert to DataFrame"""
+        """
+        Get data from MongoDB collection and convert to DataFrame.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the data from MongoDB collection.
+        """
         self.logger.info("Exporting data from MongoDB collection to DataFrame.")
         raw_data = MongoDBClient(
             uri=MONGODB_URI_KEY,
-        ).get_collection()
+        ).get_collection().find()
         self.logger.info("Data exported from MongoDB collection successfully.")
         return pd.DataFrame(list(raw_data))
             
 
     def _read_fallback_csv(self) -> pd.DataFrame:
-        """Fallback to reading CSV file if MongoDB fails"""
+        """
+        Fallback to reading CSV file if MongoDB fails.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the data from the fallback CSV file.
+        """
         try:
             self.logger.info("Reading fallback CSV file.")
             data = pd.read_csv(self.data_ingestion_config.offline_file_path)
@@ -121,7 +159,12 @@ class DataIngestion:
             self._exception_handler.handle_exception(exc)
 
     def _save_data_to_feature_store(self, data: pd.DataFrame) -> None:
-        """Save dataset to feature store location"""
+        """
+        Save dataset to feature store location.
+
+        Args:
+            data (pd.DataFrame): DataFrame containing the data to be saved.
+        """
         try:
             self.logger.info("Saving data to feature store location.")
             data.to_csv(

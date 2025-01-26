@@ -92,10 +92,12 @@ class AdvancedMLLogger:
         log_file_path: str = os.path.join(
             self.log_dir, f"{self.name}_{timestamp}.log"
         )
-        file_handler: logging.handlers.RotatingFileHandler = logging.handlers.RotatingFileHandler(
-            log_file_path,
-            maxBytes=self.max_bytes,
-            backupCount=self.backup_count
+        file_handler: logging.handlers.RotatingFileHandler = (
+            logging.handlers.RotatingFileHandler(
+                log_file_path,
+                maxBytes=self.max_bytes,
+                backupCount=self.backup_count
+            )
         )
         file_handler.setLevel(self.file_level)
         file_handler.setFormatter(base_formatter)

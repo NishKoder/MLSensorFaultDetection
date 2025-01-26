@@ -1,4 +1,6 @@
 import logging
+from logging import Logger
+from traceback import FrameSummary
 from typing import Any, Optional, Type
 import traceback
 import os
@@ -16,12 +18,12 @@ def _create_default_logger() -> logging.Logger:
     Returns:
         logging.Logger: A configured logger instance.
     """
-    logger = logging.getLogger("AdvancedExceptionHandler")
+    logger: Logger = logging.getLogger("AdvancedExceptionHandler")
     logger.setLevel(logging.DEBUG)
 
-    handler = logging.StreamHandler()
+    handler: logging.StreamHandler = logging.StreamHandler()
     handler.setLevel(logging.DEBUG)
-    formatter = logging.Formatter(
+    formatter: logging.Formatter = logging.Formatter(
         DEFAULT_LOG_FORMAT,
         datefmt=DEFAULT_DATE_FORMAT
     )
@@ -71,14 +73,15 @@ class AdvancedExceptionHandler:
             custom_message (Optional[str]): An optional custom message to
                 include in the log.
         """
-        frame = traceback.extract_tb(exc.__traceback__)[-1]
-        file_name = os.path.basename(frame.filename)
-        line_number = frame.lineno
+        frame: FrameSummary = traceback.extract_tb(exc.__traceback__)[-1]
+        file_name: str = os.path.basename(frame.filename)
+        line_number: int = frame.lineno
         if custom_message:
             self.logger.log(self.log_level, f"Custom Message: {custom_message}")
         self.logger.log(
             self.log_level,
-            f"Exception occurred in file '{file_name}', line {line_number}: {str(exc)}"
+            f"Exception occurred in file '{file_name}', "
+            f"line {line_number}: {str(exc)}"
         )
 
     def raise_custom_exception(
@@ -118,7 +121,7 @@ class AdvancedExceptionHandler:
             ValueError: If the value does not match the expected type.
         """
         if not isinstance(value, expected_type):
-            error_message = (
+            error_message: str = (
                 f"Invalid type for field '{field_name}': "
                 f"Expected {expected_type.__name__}, "
                 f"got {type(value).__name__}."

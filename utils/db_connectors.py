@@ -7,15 +7,10 @@ import pymongo.collection
 import pymongo.cursor
 import pymongo.database
 import pymongo.results
-from pymongo.errors import CollectionInvalid
 
+from utils.constants import COLLECTION_NAME, MONGODB_URI, DATABASE_NAME
 from utils.exceptions import AdvancedExceptionHandler
 from utils.types import SimpleJson
-
-
-MONGODB_URI = "your_mongodb_uri"
-DATABASE_NAME = "your_database_name"
-COLLECTION_NAME = "your_collection_name"
 
 ca = certifi.where()
 
@@ -90,7 +85,10 @@ class MongoDBClient:
             )
             raise MongoDBConnectionError(str(e))
 
-    def get_collection(self, collection_name: str = COLLECTION_NAME) -> pymongo.collection.Collection:
+    def get_collection(
+            self,
+            collection_name: str = COLLECTION_NAME
+    ) -> pymongo.collection.Collection:
         """
         Gets a specified collection from the database.
 
@@ -103,7 +101,11 @@ class MongoDBClient:
         Raises:
             MongoDBOperationError: If there is an error retrieving the collection.
         """
-        self.exception_handler.validate_input(collection_name, str, "collection_name")
+        self.exception_handler.validate_input(
+            collection_name,
+            str,
+            "collection_name"
+        )
         if not self.database:
             self.exception_handler.handle_exception(
                 MongoDBConnectionError("Not connected to a database.")
@@ -116,7 +118,7 @@ class MongoDBClient:
             self.exception_handler.handle_exception(
                 e, f"Failed to get collection: {collection_name}"
             )
-            raise MongoDBOperationError("get_collection", str(e))
+            # raise MongoDBOperationError("get_collection", str(e))
 
     def insert_document(
         self,
@@ -136,7 +138,10 @@ class MongoDBClient:
         Raises:
             MongoDBOperationError: If there is an error inserting the document.
         """
-        self.exception_handler.validate_input(collection_name, str, "collection_name")
+        self.exception_handler.validate_input(
+            collection_name,
+            str, "collection_name"
+        )
         self.exception_handler.validate_input(document, dict, "document")
         try:
             collection: pymongo.collection.Collection = self.get_collection(
@@ -168,7 +173,11 @@ class MongoDBClient:
         Raises:
             MongoDBOperationError: If there is an error finding the documents.
         """
-        self.exception_handler.validate_input(collection_name, str, "collection_name")
+        self.exception_handler.validate_input(
+            collection_name,
+            str,
+            "collection_name"
+        )
         self.exception_handler.validate_input(query, dict, "query")
         try:
             collection: pymongo.collection.Collection = self.get_collection(
@@ -189,7 +198,8 @@ class MongoDBClient:
         update_values: SimpleJson,
     ) -> int:
         """
-        Updates a single document in the specified collection that matches the given query.
+        Updates a single document in the specified collection that matches
+        the given query.
 
         Args:
             collection_name (str): The name of the collection.
@@ -202,9 +212,17 @@ class MongoDBClient:
         Raises:
             MongoDBOperationError: If there is an error updating the document.
         """
-        self.exception_handler.validate_input(collection_name, str, "collection_name")
+        self.exception_handler.validate_input(
+            collection_name,
+            str,
+            "collection_name"
+        )
         self.exception_handler.validate_input(query, dict, "query")
-        self.exception_handler.validate_input(update_values, dict, "update_values")
+        self.exception_handler.validate_input(
+            update_values,
+            dict,
+            "update_values"
+        )
 
         try:
             collection: pymongo.collection.Collection = self.get_collection(
@@ -222,7 +240,8 @@ class MongoDBClient:
 
     def delete_document(self, collection_name: str, query: SimpleJson) -> int:
         """
-        Deletes a single document in the specified collection that matches the given query.
+        Deletes a single document in the specified collection that matches the
+            given query.
 
         Args:
             collection_name (str): The name of the collection.
@@ -234,7 +253,11 @@ class MongoDBClient:
         Raises:
             MongoDBOperationError: If there is an error deleting the document.
         """
-        self.exception_handler.validate_input(collection_name, str, "collection_name")
+        self.exception_handler.validate_input(
+            collection_name,
+            str,
+            "collection_name"
+        )
         self.exception_handler.validate_input(query, dict, "query")
 
         try:

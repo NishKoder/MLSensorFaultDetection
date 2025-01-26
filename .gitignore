@@ -11,6 +11,7 @@ __pycache__/
 .Python
 build/
 logs/
+artifact/
 develop-eggs/
 hello.py
 .vscode/
