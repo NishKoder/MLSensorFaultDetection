@@ -14,3 +14,5 @@ TRAIN_TEST_SPLIT_RATIO: float = 0.2
 MONGODB_URI = "your_mongodb_uri"
 DATABASE_NAME = "database"
 COLLECTION_NAME = "collection_name"
+
+DATA_DRIFT_THRESHOLD: float = 0.05

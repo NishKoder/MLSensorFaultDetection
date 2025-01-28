@@ -1,28 +1,42 @@
+import data
 from sensor.constants.pipeline.training import TRAINING_PIPELINE_LOGGER
-from sensor.entity.artifact_entity import (
+from sensor.datamodels.artifact import (
     DataIngestionArtifactEntity,
+    DataValidationArtifactEntity,
+    DataTransformationArtifactEntity
 )
-from sensor.entity.config_entity import (
+from sensor.datamodels.config import (
     TrainingPipelineConfigEntity,
     DataIngestionConfigEntity,
+    DataValidationConfigEntity,
+    DataTransformationConfigEntity
 )
 
-from utils.exceptions import AdvancedExceptionHandler
-from utils.logger import AdvancedMLLogger
+from AIUtiils.exceptions import AdvancedExceptionHandler
+from AIUtiils.logger import AdvancedMLLogger
 from sensor.components.data_ingestion import DataIngestion
+from sensor.components.data_validation import DataValidation
+from sensor.components.data_transformation import DataTransformation
 
 
 class TrainingPipeline:
     def __init__(self) -> None:
         self._exception_handler = AdvancedExceptionHandler()
         self.logger = AdvancedMLLogger(name=TrainingPipeline.__name__)
-        
+
         training_pipeline_config = TrainingPipelineConfigEntity()
         self.data_ingestion_config = DataIngestionConfigEntity(
             training_pipeline_config=training_pipeline_config
         )
+        self.data_validation_config = DataValidationConfigEntity(
+            training_pipeline_config=training_pipeline_config
+        )
+        self.data_transformation_config = DataTransformationConfigEntity(
+            training_pipeline_config=training_pipeline_config
+        )
         self.training_pipeline_config = training_pipeline_config
-    
+
+
     def start_data_ingestion(self) -> DataIngestionArtifactEntity:
         try:
             self.logger.info("Starting data ingestion.")
@@ -38,23 +52,44 @@ class TrainingPipeline:
         except Exception as exc:
             self.logger.error("Error during data ingestion.")
             self._exception_handler.handle_exception(exc)
-    
-    def start_data_validation(self) -> None:
+
+
+    def start_data_validation(
+        self,
+        data_ingestion_artifacts: DataIngestionArtifactEntity
+    ) -> DataValidationArtifactEntity:
         try:
             self.logger.info("Starting data validation.")
+            data_validation_artifacts = DataValidation(
+                data_ingestion_artifacts,
+                self.data_validation_config
+            ).initiate_data_validation()
             self.logger.info("Data validation completed successfully.")
+            self.logger.info("Data validation artifacts: %s", data_validation_artifacts)
+            return data_validation_artifacts  # Return the artifacts
         except Exception as exc:
             self.logger.error("Error during data validation.")
             self._exception_handler.handle_exception(exc)
-    
-    def start_data_transformation(self) -> None:
+
+
+    def start_data_transformation(
+        self,
+        data_validation_artifacts: DataValidationArtifactEntity
+    ) -> None:
         try:
             self.logger.info("Starting data transformation.")
+            data_transformation_artifact = DataTransformation(
+                self.data_transformation_config,
+                data_validation_artifacts,
+            ).initiate_data_transformation()
             self.logger.info("Data transformation completed successfully.")
+            self.logger.info(
+                "Data transformation artifact: %s", data_transformation_artifact
+            )
         except Exception as exc:
             self.logger.error("Error during data transformation.")
             self._exception_handler.handle_exception(exc)
-    
+
     def start_model_training(self) -> None:
         try:
             self.logger.info("Starting model training.")
@@ -62,7 +97,7 @@ class TrainingPipeline:
         except Exception as exc:
             self.logger.error("Error during model training.")
             self._exception_handler.handle_exception(exc)
-    
+
     def start_model_evaluation(self) -> None:
         try:
             self.logger.info("Starting model evaluation.")
@@ -70,7 +105,7 @@ class TrainingPipeline:
         except Exception as exc:
             self.logger.error("Error during model evaluation.")
             self._exception_handler.handle_exception(exc)
-    
+
     def start_model_serving(self) -> None:
         try:
             self.logger.info("Starting model serving.")
@@ -78,13 +113,27 @@ class TrainingPipeline:
         except Exception as exc:
             self.logger.error("Error during model serving.")
             self._exception_handler.handle_exception(exc)
-    
+
     def run_pipeline(self) -> None:
         try:
             self.logger.info("Running the training pipeline.")
 
-            data_ingestion_artifact: DataIngestionArtifactEntity  = (
+            data_ingestion_artifact: DataIngestionArtifactEntity = (
                 self.start_data_ingestion()
+            )
+            data_validation_artifact: DataValidationArtifactEntity = (
+                self.start_data_validation(data_ingestion_artifact)
+            )
+
+            if data_validation_artifact.validation_status:
+                self.logger.info("Data validation passed.")
+            else:
+                self.logger.warning(
+                    "Data validation failed. Check the invalid data files."
+                )
+
+            data_transformation_artifact: DataTransformationArtifactEntity = (
+                self.start_data_transformation(data_validation_artifact)
             )
 
             self.logger.info("Training pipeline completed successfully.")

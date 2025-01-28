@@ -8,9 +8,9 @@ import pymongo.cursor
 import pymongo.database
 import pymongo.results
 
-from utils.constants import COLLECTION_NAME, MONGODB_URI, DATABASE_NAME
-from utils.exceptions import AdvancedExceptionHandler
-from utils.types import SimpleJson
+from AIUtiils.constants import COLLECTION_NAME, MONGODB_URI, DATABASE_NAME
+from AIUtiils.exceptions import AdvancedExceptionHandler
+from AIUtiils.types import SimpleJson
 
 ca = certifi.where()
 

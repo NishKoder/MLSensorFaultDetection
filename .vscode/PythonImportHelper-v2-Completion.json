@@ -85,6 +85,22 @@
         "documentation": {}
     },
     {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
         "label": "parse_requirements",
         "importPath": "utils.parse",
         "description": "utils.parse",
@@ -133,19 +149,69 @@
         "documentation": {}
     },
     {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
+        "label": "unittest",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "sklearn.model_selection",
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
         "documentation": {}
     },
     {
-        "label": "train_test_split",
-        "importPath": "sklearn.model_selection",
-        "description": "sklearn.model_selection",
+        "label": "pandas",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "sklearn.model_selection",
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "DataIngestion",
+        "importPath": "sensor.components.data_ingestion",
+        "description": "sensor.components.data_ingestion",
+        "isExtraImport": true,
+        "detail": "sensor.components.data_ingestion",
+        "documentation": {}
+    },
+    {
+        "label": "DataIngestion",
+        "importPath": "sensor.components.data_ingestion",
+        "description": "sensor.components.data_ingestion",
+        "isExtraImport": true,
+        "detail": "sensor.components.data_ingestion",
+        "documentation": {}
+    },
+    {
+        "label": "DataIngestionConfigEntity",
+        "importPath": "sensor.datamodels.config",
+        "description": "sensor.datamodels.config",
+        "isExtraImport": true,
+        "detail": "sensor.datamodels.config",
+        "documentation": {}
+    },
+    {
+        "label": "DataIngestionConfigEntity",
+        "importPath": "sensor.datamodels.config",
+        "description": "sensor.datamodels.config",
+        "isExtraImport": true,
+        "detail": "sensor.datamodels.config",
+        "documentation": {}
+    },
+    {
+        "label": "TrainingPipelineConfigEntity",
+        "importPath": "sensor.datamodels.config",
+        "description": "sensor.datamodels.config",
+        "isExtraImport": true,
+        "detail": "sensor.datamodels.config",
+        "documentation": {}
+    },
+    {
+        "label": "DataIngestionConfigEntity",
+        "importPath": "sensor.datamodels.config",
+        "description": "sensor.datamodels.config",
+        "isExtraImport": true,
+        "detail": "sensor.datamodels.config",
         "documentation": {}
     },
     {
@@ -157,27 +223,19 @@
         "documentation": {}
     },
     {
-        "label": "DataIngestionConfigEntity",
-        "importPath": "sensor.entity.config_entity",
-        "description": "sensor.entity.config_entity",
+        "label": "DataIngestionArtifactEntity",
+        "importPath": "sensor.datamodels.artifact",
+        "description": "sensor.datamodels.artifact",
         "isExtraImport": true,
-        "detail": "sensor.entity.config_entity",
+        "detail": "sensor.datamodels.artifact",
         "documentation": {}
     },
     {
-        "label": "TrainingPipelineConfigEntity",
-        "importPath": "sensor.entity.config_entity",
-        "description": "sensor.entity.config_entity",
+        "label": "DataIngestionArtifactEntity",
+        "importPath": "sensor.datamodels.artifact",
+        "description": "sensor.datamodels.artifact",
         "isExtraImport": true,
-        "detail": "sensor.entity.config_entity",
-        "documentation": {}
-    },
-    {
-        "label": "DataIngestionConfigEntity",
-        "importPath": "sensor.entity.config_entity",
-        "description": "sensor.entity.config_entity",
-        "isExtraImport": true,
-        "detail": "sensor.entity.config_entity",
+        "detail": "sensor.datamodels.artifact",
         "documentation": {}
     },
     {
@@ -213,15 +271,6 @@
         "documentation": {}
     },
     {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
-        "documentation": {}
-    },
-    {
         "label": "AdvancedExceptionHandler",
         "importPath": "utils.exceptions",
         "description": "utils.exceptions",
@@ -259,22 +308,6 @@
         "description": "utils.logger",
         "isExtraImport": true,
         "detail": "utils.logger",
-        "documentation": {}
-    },
-    {
-        "label": "DataIngestionArtifactEntity",
-        "importPath": "sensor.entity.artifact_entity",
-        "description": "sensor.entity.artifact_entity",
-        "isExtraImport": true,
-        "detail": "sensor.entity.artifact_entity",
-        "documentation": {}
-    },
-    {
-        "label": "DataIngestionArtifactEntity",
-        "importPath": "sensor.entity.artifact_entity",
-        "description": "sensor.entity.artifact_entity",
-        "isExtraImport": true,
-        "detail": "sensor.entity.artifact_entity",
         "documentation": {}
     },
     {
@@ -283,6 +316,22 @@
         "description": "utils.scikit_learn",
         "isExtraImport": true,
         "detail": "utils.scikit_learn",
+        "documentation": {}
+    },
+    {
+        "label": "perform_train_test_split",
+        "importPath": "utils.scikit_learn",
+        "description": "utils.scikit_learn",
+        "isExtraImport": true,
+        "detail": "utils.scikit_learn",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -318,6 +367,14 @@
         "documentation": {}
     },
     {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -335,91 +392,11 @@
         "documentation": {}
     },
     {
-        "label": "DATA_INGESTION_DIR_NAME",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
+        "label": "training",
+        "importPath": "sensor.constants.pipeline",
+        "description": "sensor.constants.pipeline",
         "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "DATA_INGESTION_FEATURE_STORE_DIR",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "DATA_INGESTION_INGESTED_DIR",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "DATA_INGESTION_COLLECTION_NAME",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "OFFLINE_FILE_PATH",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "FILE_NAME",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "TRAIN_FILE_NAME",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "TEST_FILE_NAME",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "PIPELINE_NAME",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "ARTIFACT_DIR",
-        "importPath": "sensor.constants.pipeline.training",
-        "description": "sensor.constants.pipeline.training",
-        "isExtraImport": true,
-        "detail": "sensor.constants.pipeline.training",
+        "detail": "sensor.constants.pipeline",
         "documentation": {}
     },
     {
@@ -428,14 +405,6 @@
         "description": "sensor.constants.pipeline.training",
         "isExtraImport": true,
         "detail": "sensor.constants.pipeline.training",
-        "documentation": {}
-    },
-    {
-        "label": "DataIngestion",
-        "importPath": "sensor.components.data_ingestion",
-        "description": "sensor.components.data_ingestion",
-        "isExtraImport": true,
-        "detail": "sensor.components.data_ingestion",
         "documentation": {}
     },
     {
@@ -448,12 +417,11 @@
         "documentation": {}
     },
     {
-        "label": "unittest",
-        "kind": 6,
+        "label": "Logger",
+        "importPath": "logging",
+        "description": "logging",
         "isExtraImport": true,
-        "importPath": "unittest",
-        "description": "unittest",
-        "detail": "unittest",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -555,6 +523,14 @@
         "documentation": {}
     },
     {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Dict",
         "importPath": "typing",
         "description": "typing",
@@ -615,36 +591,27 @@
         "documentation": {}
     },
     {
-        "label": "SimpleJson",
-        "importPath": "utils.types",
-        "description": "utils.types",
+        "label": "COLLECTION_NAME",
+        "importPath": "utils.constants",
+        "description": "utils.constants",
         "isExtraImport": true,
-        "detail": "utils.types",
+        "detail": "utils.constants",
         "documentation": {}
     },
     {
-        "label": "UnionDT",
-        "importPath": "utils.types",
-        "description": "utils.types",
+        "label": "MONGODB_URI",
+        "importPath": "utils.constants",
+        "description": "utils.constants",
         "isExtraImport": true,
-        "detail": "utils.types",
+        "detail": "utils.constants",
         "documentation": {}
     },
     {
-        "label": "SimpleJson",
-        "importPath": "utils.types",
-        "description": "utils.types",
+        "label": "DATABASE_NAME",
+        "importPath": "utils.constants",
+        "description": "utils.constants",
         "isExtraImport": true,
-        "detail": "utils.types",
-        "documentation": {}
-    },
-    {
-        "label": "traceback",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "traceback",
-        "description": "traceback",
-        "detail": "traceback",
+        "detail": "utils.constants",
         "documentation": {}
     },
     {
@@ -712,12 +679,61 @@
         "documentation": {}
     },
     {
+        "label": "SimpleJson",
+        "importPath": "utils.types",
+        "description": "utils.types",
+        "isExtraImport": true,
+        "detail": "utils.types",
+        "documentation": {}
+    },
+    {
+        "label": "UnionDT",
+        "importPath": "utils.types",
+        "description": "utils.types",
+        "isExtraImport": true,
+        "detail": "utils.types",
+        "documentation": {}
+    },
+    {
+        "label": "SimpleJson",
+        "importPath": "utils.types",
+        "description": "utils.types",
+        "isExtraImport": true,
+        "detail": "utils.types",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "FrameSummary",
+        "importPath": "traceback",
+        "description": "traceback",
+        "isExtraImport": true,
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
         "label": "logging.handlers",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "logging.handlers",
         "description": "logging.handlers",
         "detail": "logging.handlers",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
         "documentation": {}
     },
     {
@@ -873,39 +889,48 @@
         "documentation": {}
     },
     {
+        "label": "TestDataIngestion",
+        "kind": 6,
+        "importPath": "Tests.components.test_data_ingestion",
+        "description": "Tests.components.test_data_ingestion",
+        "peekOfCode": "class TestDataIngestion(unittest.TestCase):\n    def setUp(self):\n        self.config = DataIngestionConfigEntity(\n            training_pipeline_config=MagicMock()\n        )\n        self.data_ingestion = DataIngestion(data_ingestion_config=self.config)\n    @patch('sensor.components.data_ingestion.MongoDBClient')\n    def test_export_data_to_feature_store(self, mock_mongo_client):\n        mock_mongo_client.return_value.get_collection.return_value.find.return_value = [\n        ]",
+        "detail": "Tests.components.test_data_ingestion",
+        "documentation": {}
+    },
+    {
         "label": "DataIngestion",
         "kind": 6,
         "importPath": "sensor.components.data_ingestion",
         "description": "sensor.components.data_ingestion",
-        "peekOfCode": "class DataIngestion:\n    def __init__(\n        self,\n        data_ingestion_config: DataIngestionConfigEntity\n    ) -> None:\n        self._exception_handler = AdvancedExceptionHandler()\n        self.logger = AdvancedMLLogger(name=DataIngestion.__name__)\n        self.data_ingestion_config = data_ingestion_config\n    def initiate_data_ingestion(self) -> DataIngestionArtifactEntity:\n        \"\"\"Main entry point for data ingestion pipeline\"\"\"",
+        "peekOfCode": "class DataIngestion:\n    \"\"\"\n    DataIngestion class to handle the data ingestion process.\n    Attributes:\n        data_ingestion_config (DataIngestionConfigEntity): Configuration for\n            data ingestion.\n        logger (AdvancedMLLogger): Logger for logging information and errors.\n        _exception_handler (AdvancedExceptionHandler): Exception handler\n            for managing exceptions.\n    \"\"\"",
         "detail": "sensor.components.data_ingestion",
         "documentation": {}
     },
     {
         "label": "DataIngestionArtifactEntity",
         "kind": 6,
-        "importPath": "sensor.entity.artifact_entity",
-        "description": "sensor.entity.artifact_entity",
-        "peekOfCode": "class DataIngestionArtifactEntity:\n    trained_file_path: str\n    test_file_path: str",
-        "detail": "sensor.entity.artifact_entity",
+        "importPath": "sensor.datamodels.artifact",
+        "description": "sensor.datamodels.artifact",
+        "peekOfCode": "class DataIngestionArtifactEntity:\n    trained_file_path: Path\n    test_file_path: Path",
+        "detail": "sensor.datamodels.artifact",
         "documentation": {}
     },
     {
         "label": "TrainingPipelineConfigEntity",
         "kind": 6,
-        "importPath": "sensor.entity.config_entity",
-        "description": "sensor.entity.config_entity",
-        "peekOfCode": "class TrainingPipelineConfigEntity:\n    def __init__(self, timestamp: datetime = None) -> None:\n        self.timestamp: str = (\n            timestamp or datetime.now()\n        ).strftime(\"%m_%d_%Y_%H_%M_%S\")\n        self.pipeline_name: str = PIPELINE_NAME\n        self.artifact_dir: Path = Path(ARTIFACT_DIR) / self.timestamp\nclass DataIngestionConfigEntity:\n    def __init__(self, training_pipeline_config: TrainingPipelineConfigEntity) -> None:\n        base_dir = training_pipeline_config.artifact_dir / DATA_INGESTION_DIR_NAME",
-        "detail": "sensor.entity.config_entity",
+        "importPath": "sensor.datamodels.config",
+        "description": "sensor.datamodels.config",
+        "peekOfCode": "class TrainingPipelineConfigEntity:\n    timestamp: str = datetime.now().strftime(\"%m_%d_%Y_%H_%M_%S\")\n    pipeline_name: str = training_constants.PIPELINE_NAME\n    artifact_dir: Path = Path(training_constants.ARTIFACT_DIR) / timestamp\n@dataclass\nclass DataIngestionConfigEntity:\n    training_pipeline_config: TrainingPipelineConfigEntity\n    def __post_init__(self):\n        base_dir = (\n            self.training_pipeline_config.artifact_dir /",
+        "detail": "sensor.datamodels.config",
         "documentation": {}
     },
     {
         "label": "DataIngestionConfigEntity",
         "kind": 6,
-        "importPath": "sensor.entity.config_entity",
-        "description": "sensor.entity.config_entity",
-        "peekOfCode": "class DataIngestionConfigEntity:\n    def __init__(self, training_pipeline_config: TrainingPipelineConfigEntity) -> None:\n        base_dir = training_pipeline_config.artifact_dir / DATA_INGESTION_DIR_NAME\n        ingested_dir = base_dir / DATA_INGESTION_INGESTED_DIR\n        self.data_ingestion_dir: Path = base_dir\n        self.feature_store_dir: Path = (\n            base_dir / DATA_INGESTION_FEATURE_STORE_DIR / FILE_NAME\n        )\n        self.training_file_path: Path = ingested_dir / TRAIN_FILE_NAME\n        self.testing_file_path: Path = ingested_dir / TEST_FILE_NAME",
-        "detail": "sensor.entity.config_entity",
+        "importPath": "sensor.datamodels.config",
+        "description": "sensor.datamodels.config",
+        "peekOfCode": "class DataIngestionConfigEntity:\n    training_pipeline_config: TrainingPipelineConfigEntity\n    def __post_init__(self):\n        base_dir = (\n            self.training_pipeline_config.artifact_dir /\n            training_constants.DATA_INGESTION_DIR_NAME\n        )\n        ingested_dir = base_dir / training_constants.DATA_INGESTION_INGESTED_DIR\n        self.data_ingestion_dir: Path = base_dir\n        self.feature_store_dir: Path = (",
+        "detail": "sensor.datamodels.config",
         "documentation": {}
     },
     {
@@ -936,6 +961,42 @@
         "documentation": {}
     },
     {
+        "label": "TestPerformTrainTestSplit",
+        "kind": 6,
+        "importPath": "utils.Tests.test_sk_learn",
+        "description": "utils.Tests.test_sk_learn",
+        "peekOfCode": "class TestPerformTrainTestSplit(unittest.TestCase):\n    def setUp(self):\n        # Create a sample DataFrame for testing\n        self.data = pd.DataFrame({\n            'feature1': range(10),\n            'feature2': range(10, 20),\n            'target': range(20, 30)\n        })\n    def test_split_ratio(self):\n        train_set, test_set = perform_train_test_split(self.data, test_size=0.2)",
+        "detail": "utils.Tests.test_sk_learn",
+        "documentation": {}
+    },
+    {
+        "label": "MONGODB_URI",
+        "kind": 5,
+        "importPath": "utils.constants",
+        "description": "utils.constants",
+        "peekOfCode": "MONGODB_URI = \"your_mongodb_uri\"\nDATABASE_NAME = \"database\"\nCOLLECTION_NAME = \"collection_name\"",
+        "detail": "utils.constants",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_NAME",
+        "kind": 5,
+        "importPath": "utils.constants",
+        "description": "utils.constants",
+        "peekOfCode": "DATABASE_NAME = \"database\"\nCOLLECTION_NAME = \"collection_name\"",
+        "detail": "utils.constants",
+        "documentation": {}
+    },
+    {
+        "label": "COLLECTION_NAME",
+        "kind": 5,
+        "importPath": "utils.constants",
+        "description": "utils.constants",
+        "peekOfCode": "COLLECTION_NAME = \"collection_name\"",
+        "detail": "utils.constants",
+        "documentation": {}
+    },
+    {
         "label": "MongoDBConnectionError",
         "kind": 6,
         "importPath": "utils.db_connectors",
@@ -959,24 +1020,6 @@
         "importPath": "utils.db_connectors",
         "description": "utils.db_connectors",
         "peekOfCode": "class MongoDBClient:\n    \"\"\"\n    A client for interacting with a MongoDB database.\n    Provides methods for connecting to the database and performing CRUD operations.\n    \"\"\"\n    client: Optional[pymongo.MongoClient] = None\n    database: Optional[pymongo.database.Database] = None\n    def __init__(\n        self,\n        uri: str = MONGODB_URI,",
-        "detail": "utils.db_connectors",
-        "documentation": {}
-    },
-    {
-        "label": "MONGODB_URI",
-        "kind": 5,
-        "importPath": "utils.db_connectors",
-        "description": "utils.db_connectors",
-        "peekOfCode": "MONGODB_URI = \"your_mongodb_uri\"\nDATABASE_NAME = \"your_database_name\"\nca = certifi.where()\nclass MongoDBConnectionError(Exception):\n    \"\"\"Custom exception for MongoDB connection errors.\"\"\"\n    def __init__(self, message: str):\n        \"\"\"\n        Initializes MongoDBConnectionError.\n        Args:\n            message (str): Error message.",
-        "detail": "utils.db_connectors",
-        "documentation": {}
-    },
-    {
-        "label": "DATABASE_NAME",
-        "kind": 5,
-        "importPath": "utils.db_connectors",
-        "description": "utils.db_connectors",
-        "peekOfCode": "DATABASE_NAME = \"your_database_name\"\nca = certifi.where()\nclass MongoDBConnectionError(Exception):\n    \"\"\"Custom exception for MongoDB connection errors.\"\"\"\n    def __init__(self, message: str):\n        \"\"\"\n        Initializes MongoDBConnectionError.\n        Args:\n            message (str): Error message.\n        \"\"\"",
         "detail": "utils.db_connectors",
         "documentation": {}
     },
@@ -1021,7 +1064,7 @@
         "kind": 2,
         "importPath": "utils.scikit_learn",
         "description": "utils.scikit_learn",
-        "peekOfCode": "def perform_train_test_split(\n    dataframe: pd.DataFrame,\n    test_size: float = TRAIN_TEST_SPLIT_RATIO,\n) -> pd.DataFrame:\n        train_set, test_set = train_test_split(\n            dataframe,\n            test_size=test_size\n        )\n        return train_set,test_set",
+        "peekOfCode": "def perform_train_test_split(\n    dataframe: pd.DataFrame,\n    test_size: float = TRAIN_TEST_SPLIT_RATIO,\n) -> tuple[Any, Any]:\n    \"\"\"\n    Splits the given DataFrame into training and testing sets.\n    Parameters:\n    dataframe (pd.DataFrame): The DataFrame to split.\n    test_size (float): The proportion of the dataset to include in the test split.\n                       Defaults to TRAIN_TEST_SPLIT_RATIO.",
         "detail": "utils.scikit_learn",
         "documentation": {}
     },

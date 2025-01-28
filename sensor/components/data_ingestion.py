@@ -2,13 +2,13 @@ import os
 import pandas as pd
 
 from sensor.constants.common.env import MONGODB_URI_KEY
-from sensor.entity.artifact_entity import DataIngestionArtifactEntity
-from sensor.entity.config_entity import DataIngestionConfigEntity
+from sensor.datamodels.artifact import DataIngestionArtifactEntity
+from sensor.datamodels.config import DataIngestionConfigEntity
 
-from utils.db_connectors import MongoDBClient
-from utils.exceptions import AdvancedExceptionHandler
-from utils.logger import AdvancedMLLogger
-from utils.scikit_learn import perform_train_test_split
+from AIUtiils.db_connectors import MongoDBClient
+from AIUtiils.exceptions import AdvancedExceptionHandler
+from AIUtiils.logger import AdvancedMLLogger
+from AIUtiils.scikit_learn import perform_train_test_split
 
 class DataIngestion:
     """
@@ -35,7 +35,8 @@ class DataIngestion:
         self._exception_handler = AdvancedExceptionHandler()
         self.logger = AdvancedMLLogger(name=DataIngestion.__name__)
         self.data_ingestion_config = data_ingestion_config
-    
+
+
     def initiate_data_ingestion(self) -> DataIngestionArtifactEntity:
         """
         Main entry point for data ingestion pipeline.
@@ -63,6 +64,7 @@ class DataIngestion:
         except Exception as exc:
             self.logger.error("Error during data ingestion process.")
             self._exception_handler.handle_exception(exc)
+
 
     def export_data_to_feature_store(self) -> pd.DataFrame:
         """
@@ -98,7 +100,7 @@ class DataIngestion:
                 self.data_ingestion_config.training_file_path
             )
             os.makedirs(dir_path, exist_ok=True)
-            self.logger.info(f"Exporting train and test file path.")
+            self.logger.info("Exporting train and test file path.")
             train_set.to_csv(
                 self.data_ingestion_config.training_file_path,
                 index=False,
@@ -127,7 +129,7 @@ class DataIngestion:
         ).get_collection().find()
         self.logger.info("Data exported from MongoDB collection successfully.")
         return pd.DataFrame(list(raw_data))
-            
+
 
     def _read_fallback_csv(self) -> pd.DataFrame:
         """

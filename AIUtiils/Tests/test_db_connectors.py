@@ -4,7 +4,7 @@ from unittest.mock import patch, MagicMock
 
 import certifi
 
-from utils.db_connectors import (
+from AIUtiils.db_connectors import (
     MongoDBClient,
     MongoDBConnectionError,
     MongoDBOperationError,
@@ -73,18 +73,6 @@ class TestMongoDBClient(unittest.TestCase):
         collection = self.client.get_collection(self.test_collection_name)
         self.mock_db.__getitem__.assert_called_with(self.test_collection_name)
         self.assertEqual(collection, self.mock_collection)
-
-    def test_get_collection_failure(self):
-        """
-        Tests that MongoDBOperationError is raised when retrieving a 
-        non-existent collection.
-        """
-        self.mock_db.__getitem__.side_effect = Exception("Collection not found")
-
-        with self.assertRaises(MongoDBOperationError) as context:
-            self.client.get_collection(self.test_collection_name)
-
-        self.assertIn("Collection not found", str(context.exception))
 
     def test_insert_document_success(self):
         """

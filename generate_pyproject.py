@@ -2,8 +2,8 @@ from typing import NoReturn
 import toml
 
 
-from utils.types import SimpleJson
-from utils.parse import parse_requirements
+from AIUtiils.types import SimpleJson
+from AIUtiils.parse import parse_requirements
 
 
 def update_dependencies(

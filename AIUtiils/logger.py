@@ -5,14 +5,14 @@ import logging
 import logging.handlers
 from typing import Optional
 
-from utils.constants import (
+from AIUtiils.constants import (
     MAX_LOG_FILE_SIZE,
     BACKUP_LOG_COUNT,
     DEFAULT_LOG_FORMAT,
     DEFAULT_LOG_DIR,
     DEFAULT_DATE_FORMAT,
 )
-from utils.types import UnionDT
+from AIUtiils.types import UnionDT
 
 
 class AdvancedMLLogger:
@@ -63,45 +63,44 @@ class AdvancedMLLogger:
         os.makedirs(self.log_dir, exist_ok=True)
 
         self.logger: logging.Logger = logging.getLogger(self.name)
-        self.logger.setLevel(logging.DEBUG)
+        if not self.logger.hasHandlers():  # Check if handlers already exist
+            self.logger.setLevel(logging.DEBUG)
 
-
-        base_formatter: logging.Formatter = logging.Formatter(
-            DEFAULT_LOG_FORMAT,
-            datefmt=DEFAULT_DATE_FORMAT
-        )
-        if custom_formatters:
-           
-            class CustomFormatter(logging.Formatter):
-              def format(self, record):
-                  for data_type, formatter_func in custom_formatters.items():
-                      if isinstance(record.msg, data_type):
-                          record.msg = formatter_func(record.msg)
-                  return super().format(record)
-            base_formatter = CustomFormatter(
-              DEFAULT_LOG_FORMAT,
-              datefmt=DEFAULT_DATE_FORMAT
+            base_formatter: logging.Formatter = logging.Formatter(
+                DEFAULT_LOG_FORMAT,
+                datefmt=DEFAULT_DATE_FORMAT
             )
+            if custom_formatters:
+                class CustomFormatter(logging.Formatter):
+                    def format(self, record):
+                        for data_type, formatter_func in custom_formatters.items():
+                            if isinstance(record.msg, data_type):
+                                record.msg = formatter_func(record.msg)
+                        return super().format(record)
+                base_formatter = CustomFormatter(
+                    DEFAULT_LOG_FORMAT,
+                    datefmt=DEFAULT_DATE_FORMAT
+                )
 
-        console_handler: logging.StreamHandler = logging.StreamHandler(sys.stdout)
-        console_handler.setLevel(self.console_level)
-        console_handler.setFormatter(base_formatter)
-        self.logger.addHandler(console_handler)
+            console_handler: logging.StreamHandler = logging.StreamHandler(sys.stdout)
+            console_handler.setLevel(self.console_level)
+            console_handler.setFormatter(base_formatter)
+            self.logger.addHandler(console_handler)
 
-        timestamp: str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        log_file_path: str = os.path.join(
-            self.log_dir, f"{self.name}_{timestamp}.log"
-        )
-        file_handler: logging.handlers.RotatingFileHandler = (
-            logging.handlers.RotatingFileHandler(
-                log_file_path,
-                maxBytes=self.max_bytes,
-                backupCount=self.backup_count
+            timestamp: str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            log_file_path: str = os.path.join(
+                self.log_dir, f"{self.name}_{timestamp}.log"
             )
-        )
-        file_handler.setLevel(self.file_level)
-        file_handler.setFormatter(base_formatter)
-        self.logger.addHandler(file_handler)
+            file_handler: logging.handlers.RotatingFileHandler = (
+                logging.handlers.RotatingFileHandler(
+                    log_file_path,
+                    maxBytes=self.max_bytes,
+                    backupCount=self.backup_count
+                )
+            )
+            file_handler.setLevel(self.file_level)
+            file_handler.setFormatter(base_formatter)
+            self.logger.addHandler(file_handler)
 
     def debug(self, msg: UnionDT, *args, **kwargs) -> None:
         """Logs a debug message."""

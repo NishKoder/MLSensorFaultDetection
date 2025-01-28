@@ -3,7 +3,7 @@ from typing import Any
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from utils.constants import TRAIN_TEST_SPLIT_RATIO
+from AIUtiils.constants import TRAIN_TEST_SPLIT_RATIO
 
 
 def perform_train_test_split(
