@@ -38,3 +38,9 @@ DATA_VALIDATION_DRIFT_REPORT_FILE: str = "report.yaml"
 DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
 DATA_TRANSFORMATION_TRANSFORMED_DIR: str = "transformed"
 DATA_TRANSFORMATION_OBJECT_DIR: str = "transformed_object"
+
+# Modele Trainer
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
+MODEL_TRAINER_EXPECTTED_SCORE: float = 0.6
+MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_SCORE: float = 0.05

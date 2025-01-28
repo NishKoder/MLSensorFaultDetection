@@ -99,4 +99,23 @@ class DataTransformationConfigEntity:
         self.transformed_train_file_path: Path = transformed_train_file_path
         self.transformed_test_file_path: Path = transformed_test_file_path
         self.transformed_object_file_path: Path = transformed_object_file_path
-        
+
+
+@dataclass
+class ModelTrainerConfigEntity:
+    training_pipeline_config: TrainingPipelineConfigEntity
+
+    def __post_init__(self):
+        base_dir = (
+            self.training_pipeline_config.artifact_dir /
+            training_constants.MODEL_TRAINER_DIR_NAME
+        )
+        self.model_trainer_dir: Path = base_dir
+        self.trained_model_file_path: Path = (
+            base_dir / training_constants.MODEL_TRAINER_TRAINED_MODEL_DIR /
+            training_constants.MODEL_FILE_NAME
+        )
+        self.expected_score: float = training_constants.MODEL_TRAINER_EXPECTTED_SCORE
+        self.over_fitting_under_fitting_score: float = (
+            training_constants.MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_SCORE
+        )

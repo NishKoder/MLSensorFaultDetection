@@ -1,4 +1,5 @@
 import os
+from tkinter import E
 import dill
 import numpy as np
 import pandas as pd
@@ -57,7 +58,7 @@ def load_numpy_array_data_from_file(file_path: str) -> np.ndarray:
             data = np.load(file)
         return data
     except Exception as exc:
-        _exception_handler.logger.error("Error loading NumPy array from file.")
+        _exception_handler.logger.error(f"Error loading NumPy array from file: {file_path}")
         _exception_handler.handle_exception(exc)
 
 
@@ -95,4 +96,25 @@ def save_object_to_file(obj: object, file_path: str) -> None:
             dill.dump(obj, file)
     except Exception as exc:
         _exception_handler.logger.error("Error saving object to file.")
+        _exception_handler.handle_exception(exc)
+
+
+def load_object_from_file(file_path: str) -> object:
+    """
+    Loads an object from a file.
+
+    Args:
+        file_path (str): Path to load the file.
+
+    Returns:
+        object: Object loaded from the file.
+    """
+    try:
+        if not os.path.exists(file_path):
+            return Exception("File does not exist.")
+        with open(file_path, "rb") as file:
+            obj = dill.load(file)
+        return obj
+    except Exception as exc:
+        _exception_handler.logger.error("Error loading object from file.")
         _exception_handler.handle_exception(exc)

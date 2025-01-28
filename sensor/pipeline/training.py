@@ -1,15 +1,18 @@
+from re import M
 import data
 from sensor.constants.pipeline.training import TRAINING_PIPELINE_LOGGER
 from sensor.datamodels.artifact import (
     DataIngestionArtifactEntity,
     DataValidationArtifactEntity,
-    DataTransformationArtifactEntity
+    DataTransformationArtifactEntity,
+    ModelTrainerArtifactEntity
 )
 from sensor.datamodels.config import (
     TrainingPipelineConfigEntity,
     DataIngestionConfigEntity,
     DataValidationConfigEntity,
-    DataTransformationConfigEntity
+    DataTransformationConfigEntity,
+    ModelTrainerConfigEntity
 )
 
 from AIUtiils.exceptions import AdvancedExceptionHandler
@@ -17,6 +20,7 @@ from AIUtiils.logger import AdvancedMLLogger
 from sensor.components.data_ingestion import DataIngestion
 from sensor.components.data_validation import DataValidation
 from sensor.components.data_transformation import DataTransformation
+from sensor.components.model_trainer import ModelTrainer
 
 
 class TrainingPipeline:
@@ -32,6 +36,9 @@ class TrainingPipeline:
             training_pipeline_config=training_pipeline_config
         )
         self.data_transformation_config = DataTransformationConfigEntity(
+            training_pipeline_config=training_pipeline_config
+        )
+        self.model_trainer_config = ModelTrainerConfigEntity(
             training_pipeline_config=training_pipeline_config
         )
         self.training_pipeline_config = training_pipeline_config
@@ -60,13 +67,17 @@ class TrainingPipeline:
     ) -> DataValidationArtifactEntity:
         try:
             self.logger.info("Starting data validation.")
+            
+            if data_ingestion_artifacts is None:
+                raise ValueError("Data ingestion artifacts are None.")
+            
             data_validation_artifacts = DataValidation(
                 data_ingestion_artifacts,
                 self.data_validation_config
             ).initiate_data_validation()
             self.logger.info("Data validation completed successfully.")
             self.logger.info("Data validation artifacts: %s", data_validation_artifacts)
-            return data_validation_artifacts  # Return the artifacts
+            return data_validation_artifacts
         except Exception as exc:
             self.logger.error("Error during data validation.")
             self._exception_handler.handle_exception(exc)
@@ -75,7 +86,7 @@ class TrainingPipeline:
     def start_data_transformation(
         self,
         data_validation_artifacts: DataValidationArtifactEntity
-    ) -> None:
+    ) -> DataTransformationArtifactEntity:
         try:
             self.logger.info("Starting data transformation.")
             data_transformation_artifact = DataTransformation(
@@ -86,14 +97,24 @@ class TrainingPipeline:
             self.logger.info(
                 "Data transformation artifact: %s", data_transformation_artifact
             )
+            return data_transformation_artifact
         except Exception as exc:
             self.logger.error("Error during data transformation.")
             self._exception_handler.handle_exception(exc)
 
-    def start_model_training(self) -> None:
+    def start_model_training(
+        self,
+        data_transformation_artifact: DataTransformationArtifactEntity
+    ) -> ModelTrainerArtifactEntity:
         try:
             self.logger.info("Starting model training.")
+            model_trainer_artifact = ModelTrainer(
+                model_trainer_config=self.model_trainer_config,
+                data_transformation_artifact=data_transformation_artifact
+            ).initiate_model_training()
             self.logger.info("Model training completed successfully.")
+            self.logger.info("Model training artifact: %s", model_trainer_artifact)
+            return model_trainer_artifact
         except Exception as exc:
             self.logger.error("Error during model training.")
             self._exception_handler.handle_exception(exc)
@@ -134,6 +155,9 @@ class TrainingPipeline:
 
             data_transformation_artifact: DataTransformationArtifactEntity = (
                 self.start_data_transformation(data_validation_artifact)
+            )
+            model_trainer_artifact: ModelTrainerArtifactEntity = (
+                self.start_model_training(data_transformation_artifact)
             )
 
             self.logger.info("Training pipeline completed successfully.")
